@@ -42,6 +42,25 @@ namespace WpfApp1
             allRobots = CreateRobots();
             RobotsListBox.ItemsSource = null;
             RobotsListBox.ItemsSource = allRobots;
+
+            foreach (var robot in allRobots)
+            {
+                if (robot.RobotName.Contains("GardenMate"))
+                {
+                    robot.DownloadSkill(HouseholdSkill.Gardening);
+                }
+            }
+            foreach (var robot in allRobots)
+            {
+                if (robot.RobotName.Contains("Housemate 3000"))
+                {
+                    robot.DownloadSkill(HouseholdSkill.Cooking);
+                    robot.DownloadSkill(HouseholdSkill.Laundry);
+                }
+            }
+            
+            RobotsTextBlock.Text = null;
+            RobotsTextBlock.Text = allRobots[1].DescribeRobot();
         }
     }
 }

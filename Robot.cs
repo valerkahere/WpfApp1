@@ -11,8 +11,8 @@ namespace WpfApp1
     {
         public string RobotName { get; set; }
         public string RobotType { get; set; }
-        public double PowerCapacityKWH { get; set; }
-        public double CurrentPowerKWH { get; set; }
+        public double PowerCapacityKWH { get; set; } = 100;
+        public double CurrentPowerKWH { get; set; } = 100;
         //public Robot(string name, int batteryLevel)
         //{
         //    Name = name;
@@ -22,11 +22,14 @@ namespace WpfApp1
         {
             return (CurrentPowerKWH / PowerCapacityKWH) * 100;
         }
+        public abstract void DownloadSkill(HouseholdSkill skill);
         public abstract string DescribeRobot();
         public virtual string DisplayBatteryInformation()
         {
             return $"Battery Information\nCapacity: {PowerCapacityKWH}kWh\nCurrent Power: {CurrentPowerKWH}kWh\nBattery Level: {GetBatteryPercentage():F2}%";
         }
+
+        
 
         public override string ToString()
         {
@@ -45,29 +48,42 @@ namespace WpfApp1
         public HouseholdRobot()
         {
             RobotType = "HouseholdRobot";
+            Skills = new List<HouseholdSkill>();
+            DownloadSkill(HouseholdSkill.Cleaning);
         }
         public HouseholdRobot(string robotName)
         {
             RobotName = robotName;
             RobotType = "HouseholdRobot";
+            Skills = new List<HouseholdSkill>();
+            DownloadSkill(HouseholdSkill.Cleaning);
         }
         public HouseholdRobot(string robotName, string robotType)
         {
             RobotName = robotName;
             RobotType = robotType;
+            Skills = new List<HouseholdSkill>();
+            DownloadSkill(HouseholdSkill.Cleaning);
         }
         public HouseholdRobot(string robotName, HouseholdSkill skills)
         {
             RobotName = robotName;
             RobotType = "HouseholdRobot";
             Skills = new List<HouseholdSkill>();
-            
+            DownloadSkill(HouseholdSkill.Cleaning);
+
         }
         public HouseholdRobot(string robotName, string robotType, HouseholdSkill skills)
         {
             RobotName = robotName;
             RobotType = robotType;
             Skills = new List<HouseholdSkill>();
+            DownloadSkill(HouseholdSkill.Cleaning);
+        }
+
+        public override void DownloadSkill(HouseholdSkill skill)
+        {
+            Skills.Add(skill);
         }
 
         public override string DescribeRobot()
@@ -78,40 +94,50 @@ namespace WpfApp1
             return $"I am a {RobotName}.\n" +
                 $"I can help with chores around the house.\n\n" +
                 $"{RobotName} Skills:\n" +
-                $"{Skills}\n\n" +
+                $"{Skills.ToString()}\n\n" +
                 $"{DisplayBatteryInformation()}";
         }
     }
 
     class DeliveryRobot : Robot
     {
+        private List<HouseholdSkill> Skills { get; set; }
         private DeliveryMode ModeOfDelivery { get; set; }
         private double MaxLoadKg { get; set; }
         public DeliveryRobot()
         {
+            Skills = new List<HouseholdSkill>();
             RobotType = "DeliveryRobot";
         }
         public DeliveryRobot(string robotName)
         {
+            Skills = new List<HouseholdSkill>();
             RobotName = robotName;
             RobotType = "DeliveryRobot";
         }
         public DeliveryRobot(string robotName, string robotType)
         {
+            Skills = new List<HouseholdSkill>();
             RobotName = robotName;
             RobotType = robotType;
         }
         public DeliveryRobot(string robotName, DeliveryMode deliveryMode)
         {
+            Skills = new List<HouseholdSkill>();
             RobotName = robotName;
             RobotType = "DeliveryRobot";
             ModeOfDelivery = deliveryMode;
         }
         public DeliveryRobot(string robotName, string robotType, DeliveryMode deliveryMode)
         {
+            Skills = new List<HouseholdSkill>();
             RobotName = robotName;
             RobotType = robotType;
             ModeOfDelivery = deliveryMode;
+        }
+        public override void DownloadSkill(HouseholdSkill skill)
+        {
+            Skills.Add(skill);
         }
         public override string DescribeRobot()
         {

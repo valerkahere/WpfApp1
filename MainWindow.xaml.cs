@@ -74,6 +74,7 @@ namespace WpfApp1
             }
         }
 
+
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             if (RadioButtonAll.IsChecked == true)
@@ -93,6 +94,26 @@ namespace WpfApp1
                 var householdRobots = allRobots.Where(r => r is DeliveryRobot).ToList();
                 RobotsListBox.ItemsSource = householdRobots;
                 return;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (RobotsListBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a robot to view battery information.");
+                return;
+            } else
+            {
+                Robot selectedRobot = RobotsListBox.SelectedItem as Robot;
+                if (selectedRobot != null)
+                {
+                    if (selectedRobot.CurrentPowerKWH == 100)
+                    {
+                        MessageBox.Show($"{selectedRobot.RobotName} is already fully charged.");
+
+                    }
+                }
             }
         }
     }

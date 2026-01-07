@@ -28,12 +28,13 @@
         <RadioButton Name="RadioButtonHousehold"  FontSize="18" Content="HOUSEHOLD" Grid.Row="2" Grid.Column="0" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center" />
         <RadioButton Name="RadioButtonDelivery" FontSize="18" Content="DELIVERY" Grid.Row="3" Grid.Column="0" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
-        <Image Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Source="/images/robot.png"  MinWidth="20"/>
-        <Image Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Source="/images/household-robot.png" MinWidth="20"/>
-        <Image Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Source="/images/delivery-robot.png" MinWidth="20"/>
+        <Image Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Source="/images/robot.png"  />
+        <Image Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Source="/images/household-robot.png" />
+        <Image Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Source="/images/delivery-robot.png" />
 
         <ListBox Name="RobotsListBox" FontSize="14" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" Margin="5, 5, 5, 5" SelectionChanged="RobotsListBox_SelectionChanged"/>
-        <TextBlock Name="RobotsTextBlock" FontSize="14" TextWrapping="Wrap" Text="TextBlock" Grid.Column="2" Grid.Row="1" Grid.RowSpan="3" Margin="5, 5, 5, 5"/>
+        <TextBlock Name="RobotsTextBlock" FontSize="14" TextWrapping="Wrap"  Grid.Column="2" Grid.Row="1" Grid.RowSpan="3" Margin="5, 5, 5, 5"/>
+        <Button FontSize="30" Grid.Column="1" Content="Charge" HorizontalAlignment="Center" Grid.Row="3"  VerticalAlignment="Center" Height="50" Width="105" Click="Button_Click"/>
 
     </Grid>
 </Window>

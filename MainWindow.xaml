@@ -24,9 +24,9 @@
         <Label  FontSize="32" Content="Robot List" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
         <Label  FontSize="32" Content="Robot Details" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center"/>
 
-        <RadioButton  FontSize="18" Content="ALL ROBOTS" Grid.Row="1" Grid.Column="0" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <RadioButton FontSize="18" Content="HOUSEHOLD" Grid.Row="2" Grid.Column="0" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <RadioButton FontSize="18" Content="DELIVERY" Grid.Row="3" Grid.Column="0" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <RadioButton  Name="RadioButtonAll" FontSize="18" Content="ALL ROBOTS" Grid.Row="1" Grid.Column="0" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="RadioButton_Checked"/>
+        <RadioButton Name="RadioButtonHousehold"  FontSize="18" Content="HOUSEHOLD" Grid.Row="2" Grid.Column="0" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <RadioButton Name="RadioButtonDelivery" FontSize="18" Content="DELIVERY" Grid.Row="3" Grid.Column="0" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
         <Image Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Source="/images/robot.png"  MinWidth="20"/>
         <Image Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Source="/images/household-robot.png" MinWidth="20"/>

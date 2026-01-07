@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    abstract class Robot 
+    abstract class Robot
     {
         public string RobotName { get; set; }
         public string RobotType { get; set; }
@@ -29,7 +30,7 @@ namespace WpfApp1
             return $"Battery Information\nCapacity: {PowerCapacityKWH}kWh\nCurrent Power: {CurrentPowerKWH}kWh\nBattery Level: {GetBatteryPercentage():F2}%";
         }
 
-        
+
 
         public override string ToString()
         {
@@ -148,5 +149,6 @@ namespace WpfApp1
                 $"{DisplayBatteryInformation()}";
         }
     }
-
 }
+
+   

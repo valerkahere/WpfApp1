@@ -2,6 +2,7 @@
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -60,16 +61,38 @@ namespace WpfApp1
                 }
             }
             
-            RobotsTextBlock.Text = null;
-            RobotsTextBlock.Text = allRobots[1].DescribeRobot();
+            
         }
 
         private void RobotsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            RobotsTextBlock.Text = null;
             Robot selected = RobotsListBox.SelectedItem as Robot;
             if (selected != null)
             {
                 RobotsTextBlock.Text = selected.DescribeRobot();
+            }
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (RadioButtonAll.IsChecked == true)
+            {
+                RobotsListBox.ItemsSource = null;
+                RobotsListBox.ItemsSource = allRobots;
+                return;
+            } else if (RadioButtonHousehold.IsChecked == true)
+            {
+                RobotsListBox.ItemsSource = null;
+                var householdRobots = allRobots.Where(r => r is HouseholdRobot).ToList();
+                RobotsListBox.ItemsSource = householdRobots;
+                return;
+            }
+            else if (RadioButtonDelivery.IsChecked == true)
+            {
+                var householdRobots = allRobots.Where(r => r is DeliveryRobot).ToList();
+                RobotsListBox.ItemsSource = householdRobots;
+                return;
             }
         }
     }

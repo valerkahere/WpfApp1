@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Numerics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -31,7 +32,7 @@ namespace WpfApp1
             robots.Add(new HouseholdRobot("HouseBot"));
             robots.Add(new HouseholdRobot("GardenMate"));
             robots.Add(new HouseholdRobot("Housemate 3000"));
-            robots.Add(new DeliveryRobot("DeliverBot"));
+            robots.Add(new DeliveryRobot("DeliveryBot"));
             robots.Add(new DeliveryRobot("FlyBot"));
             robots.Add(new DeliveryRobot("Driver"));
             return robots;
@@ -61,6 +62,15 @@ namespace WpfApp1
             
             RobotsTextBlock.Text = null;
             RobotsTextBlock.Text = allRobots[1].DescribeRobot();
+        }
+
+        private void RobotsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Robot selected = RobotsListBox.SelectedItem as Robot;
+            if (selected != null)
+            {
+                RobotsTextBlock.Text = selected.DescribeRobot();
+            }
         }
     }
 }

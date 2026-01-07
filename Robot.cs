@@ -103,7 +103,7 @@ namespace WpfApp1
     {
         private List<HouseholdSkill> Skills { get; set; }
         private DeliveryMode ModeOfDelivery { get; set; }
-        private double MaxLoadKg { get; set; }
+        private double MaxLoadKg { get; set; } = 100;
         public DeliveryRobot()
         {
             Skills = new List<HouseholdSkill>();

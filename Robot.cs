@@ -37,4 +37,20 @@ namespace WpfApp1
     public enum DeliveryMode
     { Walking, Driving, Flying }
 
+    class HouseholdRobot : Robot
+    {
+        private List<HouseholdSkill> Skills { get; set; }
+        public override string DescribeRobot()
+        {
+            string skillsDescription = Skills != null && Skills.Count > 0
+                ? string.Join(", ", Skills)
+                : "No skills available";
+            return $"I am a {RobotName}.\n" +
+                $"I can help with chores around the house.\n\n" +
+                $"{RobotName} Skills:\n" +
+                $"{Skills}\n\n" +
+                $"{DisplayBatteryInformation()}";
+        }
+    }
+
 }

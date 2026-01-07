@@ -13,6 +13,9 @@ namespace WpfApp1
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// 
+    /// LINK TO REPO:
+    /// https://github.com/valerkahere/WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {

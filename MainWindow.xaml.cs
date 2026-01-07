@@ -19,9 +19,29 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<Robot> allRobots = new List<Robot>();
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private List<Robot> CreateRobots()
+        {
+            List<Robot> robots = new List<Robot>();
+            robots.Add(new HouseholdRobot("HouseBot"));
+            robots.Add(new HouseholdRobot("GardenMate"));
+            robots.Add(new HouseholdRobot("Housemate 3000"));
+            robots.Add(new DeliveryRobot("DeliverBot"));
+            robots.Add(new DeliveryRobot("FlyBot"));
+            robots.Add(new DeliveryRobot("Driver"));
+            return robots;
+        }
+
+        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            allRobots = CreateRobots();
+            RobotsListBox.ItemsSource = null;
+            RobotsListBox.ItemsSource = allRobots;
         }
     }
 }

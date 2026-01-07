@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace WpfApp1
     abstract class Robot 
     {
         public string RobotName { get; set; }
+        public string RobotType { get; set; }
         public double PowerCapacityKWH { get; set; }
         public double CurrentPowerKWH { get; set; }
         //public Robot(string name, int batteryLevel)
@@ -28,7 +30,7 @@ namespace WpfApp1
 
         public override string ToString()
         {
-            return $"{RobotName} - ";
+            return $"{RobotName} - [{RobotType}]";
         }
     }
 
@@ -40,6 +42,34 @@ namespace WpfApp1
     class HouseholdRobot : Robot
     {
         private List<HouseholdSkill> Skills { get; set; }
+        public HouseholdRobot()
+        {
+            RobotType = "HouseholdRobot";
+        }
+        public HouseholdRobot(string robotName)
+        {
+            RobotName = robotName;
+            RobotType = "HouseholdRobot";
+        }
+        public HouseholdRobot(string robotName, string robotType)
+        {
+            RobotName = robotName;
+            RobotType = robotType;
+        }
+        public HouseholdRobot(string robotName, HouseholdSkill skills)
+        {
+            RobotName = robotName;
+            RobotType = "HouseholdRobot";
+            Skills = new List<HouseholdSkill>();
+            
+        }
+        public HouseholdRobot(string robotName, string robotType, HouseholdSkill skills)
+        {
+            RobotName = robotName;
+            RobotType = robotType;
+            Skills = new List<HouseholdSkill>();
+        }
+
         public override string DescribeRobot()
         {
             string skillsDescription = Skills != null && Skills.Count > 0
@@ -57,7 +87,32 @@ namespace WpfApp1
     {
         private DeliveryMode ModeOfDelivery { get; set; }
         private double MaxLoadKg { get; set; }
-
+        public DeliveryRobot()
+        {
+            RobotType = "DeliveryRobot";
+        }
+        public DeliveryRobot(string robotName)
+        {
+            RobotName = robotName;
+            RobotType = "DeliveryRobot";
+        }
+        public DeliveryRobot(string robotName, string robotType)
+        {
+            RobotName = robotName;
+            RobotType = robotType;
+        }
+        public DeliveryRobot(string robotName, DeliveryMode deliveryMode)
+        {
+            RobotName = robotName;
+            RobotType = "DeliveryRobot";
+            ModeOfDelivery = deliveryMode;
+        }
+        public DeliveryRobot(string robotName, string robotType, DeliveryMode deliveryMode)
+        {
+            RobotName = robotName;
+            RobotType = robotType;
+            ModeOfDelivery = deliveryMode;
+        }
         public override string DescribeRobot()
         {
 

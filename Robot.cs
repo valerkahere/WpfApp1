@@ -53,4 +53,19 @@ namespace WpfApp1
         }
     }
 
+    class DeliveryRobot : Robot
+    {
+        private DeliveryMode ModeOfDelivery { get; set; }
+        private double MaxLoadKg { get; set; }
+
+        public override string DescribeRobot()
+        {
+
+            return $"I am a {RobotName}.\n" +
+                $"I specialise in delivery by Flying.\n\n" +
+                $"The maximum load I can carry is {MaxLoadKg:F2} kg.\n\n" +
+                $"{DisplayBatteryInformation()}";
+        }
+    }
+
 }
